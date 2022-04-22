@@ -1,0 +1,23 @@
+{
+  "name": "cypress-projectpenguin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pramam/cypress-projectpenguin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pramam/cypress-projectpenguin/issues"
+  },
+  "homepage": "https://github.com/pramam/cypress-projectpenguin#readme",
+  "devDependencies": {
+    "cypress": "^9.5.4"
+  }
+}
