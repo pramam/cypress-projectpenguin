@@ -1,3 +1,5 @@
 node_modules
 cypress/screenshots
 cypress/videos
+cypress.pramam.json
+cypress/fixtures/penguin/logindata.pramam.json
