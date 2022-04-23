@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("UserStory: Login", () => {
+describe("UserStory: Login and Logout Tests", () => {
   let loginData;
 
   before(async () => {
