@@ -8,9 +8,9 @@ describe("UserStory: Create New Record", () => {
   //     // console.log(`loginData` + loginData.username, loginData.password);
   //   });
 
-  before(function () {
-    // cy.fixture("penguin/logindata.json").as("loginData");
-  });
+  // before(function () {
+  //   // cy.fixture("penguin/logindata.json").as("loginData");
+  // });
   // TODO: Add login to the before block
   it(`click on new record and ensure form is displayed`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
