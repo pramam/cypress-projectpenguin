@@ -95,6 +95,22 @@ describe("UserStory: Create New Record", () => {
       // TODO: Check the typed in input
     });
   });
+
+  it(`typing in a non-mandatory field in the form should show save button`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
+        loginData.appID
+      );
+      cy.clickOnNewRecord();
+      cy.ensureOnNewRecordPage();
+
+      // As soon as you enter a field the Save button should be visible
+      cy.inputTelephone("444-444-4444");
+      cy.saveButtonShouldBeVisible();
+    });
+  });
 });
 // Submit record with optional data only
 // Submit record without any data
