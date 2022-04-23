@@ -28,9 +28,76 @@ Cypress.Commands.add("inputLastName", (lname) => {
 //   });
 // });
 
+Cypress.Commands.add("inputStreetAddress", (streetaddress) => {
+  // aJDBDjjIFiTemxLGc
+  cy.get('textarea[name="aJDBDjjIFiTemxLGc"]').type(streetaddress);
+});
+
 Cypress.Commands.add("inputCity", (city) => {
   // aFjm80LnbJf780V6p
   cy.get('input[name="aFjm80LnbJf780V6p"]').type(city);
+});
+
+Cypress.Commands.add("inputState", (state) => {
+  // aIaHwVkkr_seOK096
+  cy.get('input[name="aIaHwVkkr_seOK096"]').type(state);
+});
+
+Cypress.Commands.add("inputTelephone", (telephone) => {
+  // aJX7sLD3xZH9TlVps
+  cy.get('input[name="aJX7sLD3xZH9TlVps"]').type(telephone);
+});
+
+Cypress.Commands.add("inputZip", (zip) => {
+  // aKTyoAgO27gfZC0Vd
+  cy.get('input[name="aKTyoAgO27gfZC0Vd"]').type(zip);
+});
+
+Cypress.Commands.add("inputEmail", (email) => {
+  // aGgc3qp6gt3dDR_na
+  cy.get('input[name="aGgc3qp6gt3dDR_na"]').type(email);
+});
+
+Cypress.Commands.add("inputText", (text) => {
+  // aJr4VxhqeQ4fAZgO7
+  cy.get('input[name="aJr4VxhqeQ4fAZgO7"]').type(text);
+});
+
+Cypress.Commands.add("selectStatusFullTime", () => {
+  // aIuEa7EWYrg958AiM
+  cy.get('input[name="aIuEa7EWYrg958AiM"]').first().check(); //check(" Full Time ");
+  //   cy.get('[type="radio"]').check(" Full Time ");
+});
+
+// TODO: Not working
+Cypress.Commands.add("selectStatusPartTime", () => {
+  // aIuEa7EWYrg958AiM
+  //   cy.get('input[name="aIuEa7EWYrg958AiM"]').second().check();
+  cy.get('[value=" Part Time" ]').click();
+  //   cy.get('input[name="aIuEa7EWYrg958AiM"]').first().next().check(); //check(" Full Time ");
+});
+
+// TODO: Not working
+Cypress.Commands.add("selectStatusIntern", () => {
+  console.log("TODO: Implement checking Intern radio button");
+});
+
+Cypress.Commands.add("selectDepartmentEngineering", () => {
+  cy.get('input[name="aGMfQEKK_1G7WdqEK"]').first().check();
+});
+
+// TODO: Commands to select other Radio buttons not working
+// Sales
+// Accounting
+// Products
+// Custodial
+// HR
+// Marketing
+// Other
+// https://docs.cypress.io/api/commands/each#Yields
+
+Cypress.Commands.add("selectBenefits401K", () => {
+  cy.get('input[name="aFPpUOs0uSrcRCKYZ"]').first().check();
 });
 
 Cypress.Commands.add("saveButtonShouldBeVisible", () => {
