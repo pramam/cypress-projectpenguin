@@ -1,40 +1,52 @@
 /// <reference types="cypress" />
 
 describe("UserStory: Login and Logout Tests", () => {
-  let loginData;
+  // let loginData;
 
-  before(async () => {
-    loginData = await cy.fixture("penguin/logindata.json");
-    // console.log(`loginData` + loginData.username, loginData.password);
-  });
+  // before(async () => {
+  //   loginData = await cy.fixture("penguin/logindata.json");
+  //   // console.log(`loginData` + loginData.username, loginData.password);
+  // });
 
   it(`should be able to login with valid credentials`, function () {
-    cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
-      loginData.appID
-    );
+    cy.fixture("penguin/logindata.json").as("loginData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
+        loginData.appID
+      );
+    });
   });
 
   it(`clearing the cookies should log you out`, function () {
-    cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
-      loginData.appID
-    );
+    cy.fixture("penguin/logindata.json").as("loginData");
 
-    cy.clearCookies();
-    cy.clearLocalStorage();
-    // At this point LocalStorage and SessionStorage have
-    // baseUrl on the left pane, but no key-value pairs stored as cookies
+    cy.get("@loginData").then((loginData) => {
+      cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
+        loginData.appID
+      );
 
-    // Now you should be logged out
-    cy.ensureUserIsLoggedOut();
+      cy.clearCookies();
+      cy.clearLocalStorage();
+      // At this point LocalStorage and SessionStorage have
+      // baseUrl on the left pane, but no key-value pairs stored as cookies
+
+      // Now you should be logged out
+      cy.ensureUserIsLoggedOut();
+    });
   });
 
   it(`should be able to logout from the UI`, function () {
-    cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
-      loginData.appID
-    );
+    cy.fixture("penguin/logindata.json").as("loginData");
 
-    cy.logout();
-    cy.ensureUserIsLoggedOutFromUI();
+    cy.get("@loginData").then((loginData) => {
+      cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
+        loginData.appID
+      );
+
+      cy.logout();
+      cy.ensureUserIsLoggedOutFromUI();
+    });
   });
 
   it(`should not be able to click on login when username and password are missing`, function () {
@@ -44,11 +56,19 @@ describe("UserStory: Login and Logout Tests", () => {
   });
 
   it(`should not be able to click on login button with username present, password missing`, function () {
-    cy.cannotLoginWithMissingUsernameOrPassword(loginData.username, "");
+    cy.fixture("penguin/logindata.json").as("loginData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.cannotLoginWithMissingUsernameOrPassword(loginData.username, "");
+    });
   });
 
   it(`should not be able to click on login button with username missing, password present`, function () {
-    cy.cannotLoginWithMissingUsernameOrPassword(loginData.username, "");
+    cy.fixture("penguin/logindata.json").as("loginData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.cannotLoginWithMissingUsernameOrPassword(loginData.username, "");
+    });
   });
 
   // New tests to write:
