@@ -111,6 +111,20 @@ describe("UserStory: Create New Record", () => {
       cy.saveButtonShouldBeVisible();
     });
   });
+
+  it.only(`save button should not be visible if you have not typed into the form`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
+        loginData.appID
+      );
+      cy.clickOnNewRecord();
+      cy.ensureOnNewRecordPage();
+
+      cy.saveButtonShouldNotBeVisible();
+    });
+  });
 });
 // Submit record with optional data only
 // Submit record without any data

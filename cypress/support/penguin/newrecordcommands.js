@@ -132,6 +132,10 @@ Cypress.Commands.add("saveButtonShouldBeVisible", () => {
   cy.get('button[ng-click="click(tool)"]').should("be.visible");
 });
 
+Cypress.Commands.add("saveButtonShouldNotBeVisible", () => {
+  cy.get('button[ng-click="click(tool)"]').should("not.be.visible");
+});
+
 Cypress.Commands.add("clickSaveRecord", () => {
   //   cy.get('button[ng-click="click(tool)"]').click();
   //span[@ng-bind='tool.name'] Should have text Save
