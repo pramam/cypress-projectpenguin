@@ -17,6 +17,7 @@
 import "./commands";
 
 import "./penguin/logincommands";
+import "./penguin/newrecordcommands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
