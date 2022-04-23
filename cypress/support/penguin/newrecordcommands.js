@@ -90,6 +90,9 @@ Cypress.Commands.add("selectDepartmentEngineering", () => {
   //   const val = input.val();
   //   cy.log(JSON.stringify(val));
   // });
+
+  // use jquery to click on second radio button
+  // https://stackoverflow.com/questions/3914669/checking-a-radio-button-in-jquery
 });
 
 // TODO: Commands to select other Radio buttons not working
