@@ -14,10 +14,12 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+require("cypress-xpath");
 import "./commands";
 
 import "./penguin/logincommands";
 import "./penguin/newrecordcommands";
+import "./penguin/newrecordeditor";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

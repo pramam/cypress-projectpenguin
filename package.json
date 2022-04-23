@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/pramam/cypress-projectpenguin#readme",
   "devDependencies": {
-    "cypress": "^9.5.4"
+    "cypress": "^9.5.4",
+    "cypress-xpath": "^1.6.2"
   }
 }

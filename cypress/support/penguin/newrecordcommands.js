@@ -100,6 +100,25 @@ Cypress.Commands.add("selectBenefits401K", () => {
   cy.get('input[name="aFPpUOs0uSrcRCKYZ"]').first().check();
 });
 
+// TODO: Pass in parameter to select band with text
+Cypress.Commands.add("selectFavoriteBand", () => {
+  // multiSelect-aJewlbp6IcO21RQAO-aHJVM3nf4afdc4Kv5
+  // cy.get('#multiSelect-aJewlbp6IcO21RQAO-aHJVM3nf4afdc4Kv5')
+  //   .select(0)
+  //   .should((el) => {
+  //     const text = el.text();
+  //     text.should("eq", "The Beatles");
+  //   });
+
+  // //li[@class='ui-select-choices-group']//li
+  cy.get('a[aria-label="Select box select"]').click();
+  cy.xpath('//li[@class="ui-select-choices-group"]//li[1]')
+    .should("have.length", 1)
+    .click();
+});
+
+// Text editor commands in cypress/support/penguin/newrecordeditor.js
+
 Cypress.Commands.add("saveButtonShouldBeVisible", () => {
   cy.get('button[ng-click="click(tool)"]').should("be.visible");
 });

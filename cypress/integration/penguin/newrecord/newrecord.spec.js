@@ -82,6 +82,9 @@ describe("UserStory: Create New Record", () => {
 
       // TODO: Selecting other departments
       cy.selectBenefits401K();
+      cy.selectFavoriteBand();
+      // cy.writeInEditor("Writing a paragraph in editor");
+
       // cy.clickSaveRecord();
       // cy.checkModalSaveTimeSpent("1h 33s");
       // cy.checkRecordSavedPopup();
