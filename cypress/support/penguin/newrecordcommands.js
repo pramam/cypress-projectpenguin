@@ -84,6 +84,12 @@ Cypress.Commands.add("selectStatusIntern", () => {
 
 Cypress.Commands.add("selectDepartmentEngineering", () => {
   cy.get('input[name="aGMfQEKK_1G7WdqEK"]').first().check();
+  // check this
+  // https://stackoverflow.com/questions/55462097/cypress-to-test-radio-button-value
+  // cy.get('input[name="aGMfQEKK_1G7WdqEK"]').then((input) => {
+  //   const val = input.val();
+  //   cy.log(JSON.stringify(val));
+  // });
 });
 
 // TODO: Commands to select other Radio buttons not working

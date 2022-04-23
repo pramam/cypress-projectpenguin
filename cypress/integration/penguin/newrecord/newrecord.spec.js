@@ -83,19 +83,19 @@ describe("UserStory: Create New Record", () => {
       // TODO: Selecting other departments
       cy.selectBenefits401K();
       cy.selectFavoriteBand();
+      // TODO: Does not work
       // cy.writeInEditor("Writing a paragraph in editor");
 
-      // cy.clickSaveRecord();
-      // cy.checkModalSaveTimeSpent("1h 33s");
-      // cy.checkRecordSavedPopup();
+      cy.clickSaveRecord();
+      cy.checkModalSaveTimeSpent("1h 33s");
+      cy.checkRecordSavedPopup();
 
-      // cy.getAndCheckNewlyCreatedRecordName();
+      cy.getAndCheckNewlyCreatedRecordName();
 
-      // cy.checkLastName("world");
+      // TODO: Check the typed in input
     });
   });
 });
-// Submit record with all data fields
 // Submit record with optional data only
 // Submit record without any data
 // input empty string in SaveTimeSpent modal
