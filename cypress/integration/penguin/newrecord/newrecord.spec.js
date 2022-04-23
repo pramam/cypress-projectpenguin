@@ -112,7 +112,7 @@ describe("UserStory: Create New Record", () => {
     });
   });
 
-  it.only(`save button should not be visible if you have not typed into the form`, function () {
+  it(`save button should not be visible if you have not typed into the form`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
 
     cy.get("@loginData").then((loginData) => {
@@ -123,6 +123,25 @@ describe("UserStory: Create New Record", () => {
       cy.ensureOnNewRecordPage();
 
       cy.saveButtonShouldNotBeVisible();
+    });
+  });
+
+  it(`saving without inputting mandatory fields should show errors`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
+        loginData.appID
+      );
+      cy.clickOnNewRecord();
+      cy.ensureOnNewRecordPage();
+
+      cy.inputTelephone("444-444-4444");
+
+      cy.clickSaveRecord();
+      cy.checkModalSaveTimeSpent("1h 33s");
+
+      cy.checkMandatoryFieldErrors(3);
     });
   });
 });

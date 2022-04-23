@@ -128,6 +128,20 @@ Cypress.Commands.add("selectFavoriteBand", () => {
 
 // Text editor commands in cypress/support/penguin/newrecordeditor.js
 
+Cypress.Commands.add("checkMandatoryFieldErrors", (noerrors) => {
+  cy.xpath('//div[@class="error-messages"]')
+    .should("have.length", noerrors)
+    .each((el, index, list) => {
+      const text = el.text();
+      expect(text).to.equal("Error: Value must be populated before submitting");
+    });
+  // TODO: Make this singular or plural based on noerrors
+  cy.get('span[ng-bind="noti.title"]').should(
+    "contain",
+    "The record has validation error"
+  );
+});
+
 Cypress.Commands.add("saveButtonShouldBeVisible", () => {
   cy.get('button[ng-click="click(tool)"]').should("be.visible");
 });
