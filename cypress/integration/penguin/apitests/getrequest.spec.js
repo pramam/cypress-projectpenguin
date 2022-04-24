@@ -77,6 +77,38 @@ describe("UserStory: GET API", () => {
     });
   });
 
+  it(`GET request with invalid bearer token should give error`, function () {
+    cy.fixture("penguin/logindatainvalidbearertoken.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note the empty recordID
+        cy.GETrecordbyid(appData, loginData, "").then((res) => {
+          console.log(res.status);
+          console.log(res.body);
+          expect(res.status).to.eq(HTTP_CODES.UNAUTHORIZED);
+        });
+      });
+    });
+  });
+
+  it(`GET request with invalid private token should give error`, function () {
+    cy.fixture("penguin/logindatainvalidprivatetoken.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note the empty recordID
+        cy.GETrecordbyid(appData, loginData, "").then((res) => {
+          console.log(res.status);
+          console.log(res.body);
+          expect(res.status).to.eq(HTTP_CODES.UNAUTHORIZED);
+        });
+      });
+    });
+  });
+
   it(`GET request for invalid record ID should give empty record`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
