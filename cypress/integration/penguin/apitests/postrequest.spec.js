@@ -74,6 +74,8 @@ describe("UserStory: POST API", () => {
               cy.GETrecordbyid(appData, loginData, newrecordID).then(
                 (getres) => {
                   console.log(getres.status);
+                  expect(getres.status).to.eq(HTTP_CODES.OK);
+
                   let getresbodyvalues = getres.body.values;
                   console.log(postBody.values.aHdR_gHQmRT8ItVTL);
                   expect(getresbodyvalues).has.property(
