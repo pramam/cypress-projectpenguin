@@ -4,7 +4,7 @@ import { HTTP_CODES } from "../../../utils/penguin/httpstatuscodes";
 import { RECORD_KEYS } from "../../../utils/penguin/recordfields";
 
 describe("UserStory: POST API", () => {
-  it.only(`should get an error on POST request with missing mandatory fields`, function () {
+  it(`should get an error on POST request with missing mandatory fields`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
     cy.fixture("penguin/testdata/missingmandatoryfields.json").as("postBody");
@@ -53,32 +53,22 @@ describe("UserStory: POST API", () => {
           // cy.log(`data: ${dataMissingMandatoryFields}`);
           // let bodyjson = JSON.stringify(dataMissingMandatoryFields);
 
-          cy.request({
-            method: "POST",
-            url: `${appData.APIUrl}/app/${appData.appID}/record`,
-            failOnStatusCode: false,
-            headers: {
-              accept: "application/json",
-              Authorization: "Bearer " + loginData.bearerToken,
-              "Private-Token": loginData.privateToken,
-            },
-            // body: `${JSON.stringify(dataMissingMandatoryFields)}`,
-            body: postBody,
-            // body: {
-            //   applicationId: `${appData.appID}`,
-            //   values: {
-            //     $type: defaultRecordValueType,
-            //     // "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib",
-            //     aHdR_gHQmRT8ItVTL: "Post2FirstName",
-            //     aHxOeHmCTIGd_hg1b: "Post2LastName",
-            //     aFjm80LnbJf780V6p: "Post2City",
-            //   },
-            // },
-          })
+          // cy.request({
+          //   method: "POST",
+          //   url: `${appData.APIUrl}/app/${appData.appID}/record`,
+          //   failOnStatusCode: false,
+          //   headers: {
+          //     accept: "application/json",
+          //     Authorization: "Bearer " + loginData.bearerToken,
+          //     "Private-Token": loginData.privateToken,
+          //   },
+          //   body: postBody,
+          // })
+          cy.POST(appData, loginData, postBody)
             .then((res) => {
               console.log(res.status);
               // cy.log("============================");
-              // console.log(JSON.stringify(res));
+              console.log(JSON.stringify(res));
               expect(res.status).to.eq(HTTP_CODES.OK);
               // expect(res.body).has.property("ErrorCode", 5008);
               // expect(res.body).has.property(
