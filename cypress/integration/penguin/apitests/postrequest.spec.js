@@ -9,13 +9,10 @@ describe("UserStory: POST API", () => {
     cy.fixture("penguin/appdata.json").as("appData");
     cy.fixture("penguin/testdata/missingmandatoryfields.json").as("postBody");
 
-    let defaultRecordValueType =
-      "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib";
-
     cy.get("@loginData").then((loginData) => {
       cy.get("@appData").then((appData) => {
         cy.get("@postBody").then((postBody) => {
-          cy.POST(appData, loginData, postBody).then((res) => {
+          cy.POSTrecord(appData, loginData, postBody).then((res) => {
             expect(res.status).to.eq(HTTP_CODES.BAD_REQUEST);
             expect(res.body).has.property("ErrorCode", 5008);
             expect(res.body).has.property(
@@ -36,7 +33,7 @@ describe("UserStory: POST API", () => {
     cy.get("@loginData").then((loginData) => {
       cy.get("@appData").then((appData) => {
         cy.get("@postBody").then((postBody) => {
-          cy.POST(appData, loginData, postBody)
+          cy.POSTrecord(appData, loginData, postBody)
             .then((postres) => {
               // console.log(postres.status);
               // cy.log("============================");
@@ -47,24 +44,22 @@ describe("UserStory: POST API", () => {
               let postresbodyvalues = postres.body.values;
               // console.log(postBody.values.aHdR_gHQmRT8ItVTL);
               expect(postresbodyvalues).has.property(
-                RECORD_KEYS.RK_FIRST_NAME, //"aHdR_gHQmRT8ItVTL", // First Name
+                RECORD_KEYS.RK_FIRST_NAME,
                 postBody.values.aHdR_gHQmRT8ItVTL
               );
               expect(postresbodyvalues).has.property(
-                RECORD_KEYS.RK_LAST_NAME, //"aHxOeHmCTIGd_hg1b", // Last Name
+                RECORD_KEYS.RK_LAST_NAME,
                 postBody.values.aHxOeHmCTIGd_hg1b
               );
               expect(postresbodyvalues).has.property(
-                RECORD_KEYS.RK_CITY, //"aFjm80LnbJf780V6p", // City
+                RECORD_KEYS.RK_CITY,
                 postBody.values.aFjm80LnbJf780V6p
               );
             })
-            .then((res) => {
-              // let responseObj = res.json();
-              // cy.log(responseObj.data);
-              let resbody = res.body;
+            .then((postres) => {
+              let resbody = postres.body;
               console.log(resbody);
-              let newrecordID = res.body.id;
+              let newrecordID = postres.body.id;
               console.log(`NEW RECORD ID: ${newrecordID}`);
 
               cy.request({
