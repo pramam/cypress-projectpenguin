@@ -12,11 +12,11 @@ export const RECORD_KEYS = {
   RK_TELEPHONE: "aJX7sLD3xZH9TlVps",
   RK_TEXT_BOX: "aJr4VxhqeQ4fAZgO7",
   RK_ZIP: "aKTyoAgO27gfZC0Vd",
-  RK_STATUS: "aIuEa7EWYrg958AiM", //Full Time etc
-  RK_BENEFITS: "aFPpUOs0uSrcRCKYZ",
-  RK_DEPARTMENT: "aGMfQEKK_1G7WdqEK",
-  RK_FAVORITE_BAND: "aHJVM3nf4afdc4Kv5",
-  RK_COMMENT_BOX: "aIGLHuFzA948hVqar",
+  RK_STATUS: "aIuEa7EWYrg958AiM", //Full Time etc // has subvalue Intern
+  RK_BENEFITS: "aFPpUOs0uSrcRCKYZ", // Has subvalue 401(k)
+  RK_DEPARTMENT: "aGMfQEKK_1G7WdqEK", // Has subvalue
+  RK_FAVORITE_BAND: "aHJVM3nf4afdc4Kv5", // Has subvalue
+  RK_COMMENT_BOX: "aIGLHuFzA948hVqar", // Has subvalues, array with multiple comments possible
 };
 
 // values.$type in request body for POST request
@@ -25,8 +25,8 @@ export const POST_REQUEST_TYPE_STRING =
 
 // values.$type in *response* body of GET request
 export const GET_RESPONSE_EMPTY_TYPE_STRING =
-"System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[System.Object, System.Private.CoreLib]], System.Private.CoreLib"
-  /*
+  "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[System.Object, System.Private.CoreLib]], System.Private.CoreLib";
+/*
 export const RECORD = {
   name: "string",
   allowed: [
