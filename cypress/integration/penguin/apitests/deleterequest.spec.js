@@ -57,26 +57,19 @@ describe("UserStory: DELETE API", () => {
                     RECORD_KEYS.RK_CITY,
                     postBody.values.aFjm80LnbJf780V6p
                   );
-                  // TODO: Clean this up
-                  // Hack for now
-                  // cy.writeFile(
-                  //   `temp/${newrecordID}-GET-output.json`,
-                  //   getres.body
-                  // );
                   cy.DELETErecordbyid(appData, loginData, newrecordID).then(
                     (deleteres) => {
                       console.log(`DELETE status: ${deleteres.status}`);
                       expect(deleteres.status).to.eq(HTTP_CODES.NO_CONTENT);
 
                       // Now GET the same record and it should not be found
-                      //   cy.GETrecordbyid(appData, loginData, newrecordID).then(
-                      //     (getafterdeleteres) => {
-                      //       console.log(
-                      //         `GET AFTER DELETE status: ${getafterdeleteres.status}`
-                      //       );
-                      //       // expect(deleteres.status).to.eq(HTTP_CODES.NO_CONTENT);
-                      //     }
-                      //   );
+                      cy.GETrecordbyid(appData, loginData, newrecordID).then(
+                        (getafterdeleteres) => {
+                          expect(getafterdeleteres.status).to.eq(
+                            HTTP_CODES.BAD_REQUEST
+                          );
+                        }
+                      );
                     }
                   );
                 }

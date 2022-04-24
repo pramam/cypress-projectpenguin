@@ -18,6 +18,7 @@ Cypress.Commands.add("GETrecordbyid", (appData, loginData, recordID) => {
   cy.request({
     method: "GET",
     url: `${appData.APIUrl}/app/${appData.appID}/record/${recordID}`,
+    failOnStatusCode: false,
     headers: {
       accept: "application/json",
       Authorization: "Bearer " + loginData.bearerToken,
