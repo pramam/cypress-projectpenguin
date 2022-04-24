@@ -62,37 +62,40 @@ describe("UserStory: POST API", () => {
               let newrecordID = postres.body.id;
               console.log(`NEW RECORD ID: ${newrecordID}`);
 
-              cy.request({
-                method: "GET",
-                url: `${appData.APIUrl}/app/${appData.appID}/record/${newrecordID}`,
-                headers: {
-                  accept: "application/json",
-                  Authorization: "Bearer " + loginData.bearerToken,
-                  "Private-Token": loginData.privateToken,
-                },
-              }).then((getres) => {
-                console.log(getres.status);
-                let getresbodyvalues = getres.body.values;
-                console.log(postBody.values.aHdR_gHQmRT8ItVTL);
-                expect(getresbodyvalues).has.property(
-                  "aHdR_gHQmRT8ItVTL", // First Name
-                  postBody.values.aHdR_gHQmRT8ItVTL
-                );
-                expect(getresbodyvalues).has.property(
-                  "aHxOeHmCTIGd_hg1b", // Last Name
-                  postBody.values.aHxOeHmCTIGd_hg1b
-                );
-                expect(getresbodyvalues).has.property(
-                  "aFjm80LnbJf780V6p", // City
-                  postBody.values.aFjm80LnbJf780V6p
-                );
-                // TODO: Clean this up
-                // Hack for now
-                cy.writeFile(
-                  `temp/${newrecordID}-GET-output.json`,
-                  getres.body
-                );
-              });
+              // cy.request({
+              //   method: "GET",
+              //   url: `${appData.APIUrl}/app/${appData.appID}/record/${newrecordID}`,
+              //   headers: {
+              //     accept: "application/json",
+              //     Authorization: "Bearer " + loginData.bearerToken,
+              //     "Private-Token": loginData.privateToken,
+              //   },
+              // })
+              cy.GETrecordbyid(appData, loginData, newrecordID).then(
+                (getres) => {
+                  console.log(getres.status);
+                  let getresbodyvalues = getres.body.values;
+                  console.log(postBody.values.aHdR_gHQmRT8ItVTL);
+                  expect(getresbodyvalues).has.property(
+                    RECORD_KEYS.RK_FIRST_NAME, //"aHdR_gHQmRT8ItVTL", // First Name
+                    postBody.values.aHdR_gHQmRT8ItVTL
+                  );
+                  expect(getresbodyvalues).has.property(
+                    RECORD_KEYS.RK_LAST_NAME, //"aHxOeHmCTIGd_hg1b", // Last Name
+                    postBody.values.aHxOeHmCTIGd_hg1b
+                  );
+                  expect(getresbodyvalues).has.property(
+                    RECORD_KEYS.RK_CITY, //"aFjm80LnbJf780V6p", // City
+                    postBody.values.aFjm80LnbJf780V6p
+                  );
+                  // TODO: Clean this up
+                  // Hack for now
+                  // cy.writeFile(
+                  //   `temp/${newrecordID}-GET-output.json`,
+                  //   getres.body
+                  // );
+                }
+              );
             });
         });
       });
