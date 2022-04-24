@@ -4,6 +4,24 @@ import { HTTP_CODES } from "../../../utils/penguin/httpstatuscodes";
 import { RECORD_KEYS } from "../../../utils/penguin/recordfields";
 
 describe("UserStory: POST API", () => {
+  it(`should get an error on POST request with empty body`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note: Empty body in POST
+        cy.POSTrecord(appData, loginData, {}).then((res) => {
+          console.log(res);
+
+          expect(res.status).to.eq(HTTP_CODES.BAD_REQUEST);
+          // There should be no body?
+          // expect(res.body).to.eq("{}");
+        });
+      });
+    });
+  });
+
   it(`should get an error on POST request with missing mandatory fields`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
