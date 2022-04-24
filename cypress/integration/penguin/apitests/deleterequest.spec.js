@@ -4,6 +4,40 @@ import { HTTP_CODES } from "../../../utils/penguin/httpstatuscodes";
 import { RECORD_KEYS } from "../../../utils/penguin/recordfields";
 
 describe("UserStory: DELETE API", () => {
+  it(`should be safe to delete an invalid record id`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note the invalid recordID
+        cy.DELETErecordbyid(appData, loginData, "\\\\\\\\\\\\\\\\\\").then(
+          (deleteres) => {
+            console.log(`DELETE status: ${deleteres.status}`);
+            console.log(deleteres.body);
+            expect(deleteres.status).to.eq(HTTP_CODES.NO_CONTENT);
+          }
+        );
+      });
+    });
+  });
+
+  it(`should be safe to delete an empty record id`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note the empty
+        cy.DELETErecordbyid(appData, loginData, "").then((deleteres) => {
+          console.log(`DELETE status: ${deleteres.status}`);
+          console.log(deleteres.body);
+          expect(deleteres.status).to.eq(HTTP_CODES.NO_CONTENT);
+        });
+      });
+    });
+  });
+
   it(`should be able to delete record by id (mandatory fields)`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
