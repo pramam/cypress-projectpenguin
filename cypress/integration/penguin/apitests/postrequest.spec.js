@@ -46,6 +46,24 @@ describe("UserStory: POST API", () => {
     });
   });
 
+  it(`should get an error on POST request with only wrong appID in body`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+    cy.fixture("penguin/testdata/bodywithwrongappidonly.json").as("postBody");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        cy.get("@postBody").then((postBody) => {
+          cy.POSTrecord(appData, loginData, postBody).then((res) => {
+            console.log(res);
+
+            expect(res.status).to.eq(HTTP_CODES.BAD_REQUEST);
+          });
+        });
+      });
+    });
+  });
+
   it(`should get an error on POST request with missing mandatory fields`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
