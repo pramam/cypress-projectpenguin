@@ -20,6 +20,7 @@ import "./commands";
 import "./penguin/logincommands";
 import "./penguin/newrecordcommands";
 import "./penguin/newrecordeditor";
+import "./penguin/apicommands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
