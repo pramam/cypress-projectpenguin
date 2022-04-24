@@ -1,0 +1,8 @@
+{
+  "applicationId": "aF5sqnNFCc36kO9_J",
+  "values" : {
+    "$type":
+      "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib",
+    "RecordName": "Record Value"
+  }
+}
