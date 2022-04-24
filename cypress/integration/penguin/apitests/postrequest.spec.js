@@ -22,6 +22,24 @@ describe("UserStory: POST API", () => {
     });
   });
 
+  it(`should get an error on POST with invalid media format`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note: Junk in body
+        cy.POSTrecord(appData, loginData, "\\\\\\\\\\\\\\\\\\\\\\").then(
+          (res) => {
+            console.log(res);
+
+            expect(res.status).to.eq(HTTP_CODES.UNSUPPORTED_MEDIA_TYPE);
+          }
+        );
+      });
+    });
+  });
+
   it(`should get an error on POST request with only appID in body`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
