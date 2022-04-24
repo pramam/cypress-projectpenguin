@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add("POST", (appData, loginData, postBody) => {
+Cypress.Commands.add("POSTrecord", (appData, loginData, postBody) => {
   cy.request({
     method: "POST",
     url: `${appData.APIUrl}/app/${appData.appID}/record`,
