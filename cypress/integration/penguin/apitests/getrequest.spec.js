@@ -76,4 +76,42 @@ describe("UserStory: GET API", () => {
       });
     });
   });
+
+  it(`GET request for invalid record ID should give empty record`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        // Note the invalid recordID
+        cy.GETrecordbyid(appData, loginData, "\\\\\\\\\\\\\\\\\\\\\\\\\\").then(
+          (res) => {
+            console.log(res.status);
+            expect(res.status).to.eq(HTTP_CODES.OK);
+
+            let resbodyvalues = res.body.values;
+
+            console.log(resbodyvalues);
+            // TODO: Check for number of fields in value object, should be 10
+            expect(resbodyvalues).has.property(
+              RECORD_KEYS.RK_$TYPE,
+              GET_RESPONSE_EMPTY_TYPE_STRING
+            );
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_CITY, "");
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_UNKNOWN1, "");
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_EMAIL, "");
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_FIRST_NAME, "");
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_LAST_NAME, "");
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_STATE, "");
+            expect(resbodyvalues).has.property(
+              RECORD_KEYS.RK_STREET_ADDRESS,
+              ""
+            );
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_TELEPHONE, "");
+            expect(resbodyvalues).has.property(RECORD_KEYS.RK_TEXT_BOX, "");
+          }
+        );
+      });
+    });
+  });
 });
