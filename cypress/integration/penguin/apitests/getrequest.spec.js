@@ -15,15 +15,6 @@ describe("UserStory: GET API", () => {
 
     cy.get("@loginData").then((loginData) => {
       cy.get("@appData").then((appData) => {
-        // cy.request({
-        //   method: "GET",
-        //   url: `${appData.APIUrl}/app/${appData.appID}/record/${appData.recordID}`,
-        //   headers: {
-        //     accept: "application/json",
-        //     Authorization: "Bearer " + loginData.bearerToken,
-        //     "Private-Token": loginData.privateToken,
-        //   },
-        // });
         cy.GETrecordbyid(appData, loginData, loginData.recordID).then((res) => {
           console.log(res.status);
           expect(res.status).to.eq(HTTP_CODES.OK);
@@ -36,27 +27,15 @@ describe("UserStory: GET API", () => {
           // IMP: Edit "Sarah", "Doe", "Paris" with your values
           // for this test to work
           expect(resbodyvalues).has.property(
-            RECORD_KEYS.RK_FIRST_NAME, //"aHdR_gHQmRT8ItVTL", // First Name
+            RECORD_KEYS.RK_FIRST_NAME,
             "Sarah"
           );
           expect(resbodyvalues).has.property(
-            RECORD_KEYS.RK_LAST_NAME, //"aHxOeHmCTIGd_hg1b", // Last Name
+            RECORD_KEYS.RK_LAST_NAME,
             "Doe" // This is what was entered in the form, it comes back as DOE which is why the test is failing
             //"Doe".toUpperCase() works
           );
-          expect(resbodyvalues).has.property(
-            RECORD_KEYS.RK_CITY, //"aFjm80LnbJf780V6p", // City
-            "Paris"
-          );
-
-          // Hack for now
-          // cy.writeFile(`temp/${appData.recordID}-GET-output.json`, res.body);
-          // cy.readFile(`temp/${appData.recordID}-GET-output.json`).then(
-          //   (json) => {
-          //     expect(json).to.be.an("object");
-          //     cy.log(json.trackingFull);
-          //   }
-          // );
+          expect(resbodyvalues).has.property(RECORD_KEYS.RK_CITY, "Paris");
         });
       });
     });
