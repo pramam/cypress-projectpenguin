@@ -25,3 +25,16 @@ Cypress.Commands.add("GETrecordbyid", (appData, loginData, recordID) => {
     },
   });
 });
+
+Cypress.Commands.add("DELETErecordbyid", (appData, loginData, recordID) => {
+  cy.request({
+    method: "DELETE",
+    failOnStatusCode: false,
+    url: `${appData.APIUrl}/app/${appData.appID}/record/${recordID}`,
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer " + loginData.bearerToken,
+      "Private-Token": loginData.privateToken,
+    },
+  });
+});
