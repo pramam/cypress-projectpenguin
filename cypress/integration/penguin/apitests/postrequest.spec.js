@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import { HTTP_CODES } from "../../../utils/penguin/httpstatuscodes";
+// import { data as dataMissingMandatoryFields } from "../../../testdata/penguin/missingmandatoryfields";
 
 describe("UserStory: POST API", () => {
   it(`should get an error on POST request with missing mandatory fields`, function () {
@@ -12,6 +13,8 @@ describe("UserStory: POST API", () => {
 
     cy.get("@loginData").then((loginData) => {
       cy.get("@appData").then((appData) => {
+        cy.log(`data: ${dataMissingMandatoryFields}`);
+        // let bodyjson = JSON.stringify(dataMissingMandatoryFields);
         cy.request({
           method: "POST",
           url: `${appData.APIUrl}/app/${appData.appID}/record`,
@@ -21,6 +24,8 @@ describe("UserStory: POST API", () => {
             Authorization: "Bearer " + loginData.bearerToken,
             "Private-Token": loginData.privateToken,
           },
+          // body: `${JSON.stringify(dataMissingMandatoryFields)}`,
+          // body: bodyjson,
           body: {
             applicationId: `${appData.appID}`,
             values: {
