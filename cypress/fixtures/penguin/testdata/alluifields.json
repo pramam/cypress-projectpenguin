@@ -1,0 +1,48 @@
+{
+"applicationId": "aF5sqnNFCc36kO9_J",
+"values": {
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[System.Object, System.Private.CoreLib]], System.Private.CoreLib",
+  "aFjm80LnbJf780V6p": "FullCityName",
+  "aGgc3qp6gt3dDR_na": "fullemail@gmail.com",
+  "aG_YiSItNjs7vGALq": "",
+  "aHdR_gHQmRT8ItVTL": "FullFirstName",
+  "aHxOeHmCTIGd_hg1b": "FullLastName",
+  "aIaHwVkkr_seOK096": "FullState",
+  "aJDBDjjIFiTemxLGc": "1234 Full Street Address",
+  "aJX7sLD3xZH9TlVps": "9999999999",
+  "aJr4VxhqeQ4fAZgO7": "FullTextLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  "aKTyoAgO27gfZC0Vd": 99999,
+  "aIuEa7EWYrg958AiM": {
+    "$type": "Core.Models.Record.ValueSelection, Core",
+    "id": "5fe12636dba2b1e2425d9f8a",
+    "value": "Intern"
+  },
+  "aFPpUOs0uSrcRCKYZ": {
+    "$type": "Core.Models.Record.ValueSelection, Core",
+    "id": "5fe127ee858d8ba2744de298",
+    "value": "401(k)"
+  },
+  "aGMfQEKK_1G7WdqEK": {
+    "$type": "Core.Models.Record.ValueSelection, Core",
+    "id": "5fe12677f99c223bd93b98b6",
+    "value": "Marketing"
+  },
+  "aHJVM3nf4afdc4Kv5": {
+    "$type": "Core.Models.Record.ValueSelection, Core",
+    "id": "60ff041d356e71d1445976bc",
+    "value": "Pink Floyd"
+  }
+},
+"comments": {
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[System.Collections.Generic.List`1[[Core.Models.Record.Comments, Core]], System.Private.CoreLib]], System.Private.CoreLib",
+  "aIGLHuFzA948hVqar": [
+    {
+      "$type": "Core.Models.Record.Comments, Core",
+      "message": "<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>",
+      "isRichText": true
+    }
+  ]
+},
+"sessionTimeSpent": 138,
+"totalTimeSpent": 138
+}
