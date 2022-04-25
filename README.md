@@ -76,9 +76,6 @@ There are 3 subfolders:
 }
 ```
 
-TODO: `appdata.json` fixtures file. Sample needs to be checked in
-TODO: `logindata.json` with recordID needs to be checked in
-
 ### Update `applicationId` in `/cypress/fixtures/penguin/testdata/*.json`
 
 The format of the data.json files is the following:
