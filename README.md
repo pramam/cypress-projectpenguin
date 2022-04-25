@@ -8,7 +8,7 @@ Git clone this repo to your local machine.
 
 A lot of files with credentials and appIDs need to be edited before the automated tests can run succcessfully.
 
-Here are the files you will need to edit:
+Here are the files you will need to edit(instructions below):
 
 1. `cypress.anyname.json`
 2. `cypress/fixtures/penguin/logindata.json`
@@ -17,7 +17,11 @@ Here are the files you will need to edit:
 5. `cypress/fixtures/penguin/logindatainvalidbearertoken.json`. Give invalid bearer token.
 6. `cypress/fixtures/penguin/logindatainvalidprivatetoken.json`. Give invalid private token.
 
-Then run `npm run test` from the command line.
+Then run:
+
+1. `npm install` from the command line.
+2. `npm run test` from the command line to run the tests.
+3. Run the tests under the `penguin folder
 
 ### Edit file `cypress.anyname.json`
 
