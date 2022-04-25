@@ -282,4 +282,55 @@ describe("UserStory: POST API", () => {
       });
     });
   });
+
+  it(`should not be able to submit POST request as STATUS Intern with BENEFITS Medical(not allowed in UI)/confirm with GET`, function () {
+    cy.fixture("penguin/logindata.json").as("loginData");
+    cy.fixture("penguin/appdata.json").as("appData");
+    cy.fixture("penguin/testdata/alluifieldsinternwithmedical.json").as(
+      "postBody"
+    );
+
+    cy.get("@loginData").then((loginData) => {
+      cy.get("@appData").then((appData) => {
+        cy.get("@postBody").then((postBody) => {
+          cy.POSTrecord(appData, loginData, postBody).then((postres) => {
+            console.log(
+              `Test should fail here, continuing on to see what actually happens`
+            );
+            expect(postres.status).to.eq(HTTP_CODES.OK);
+            console.log(postres);
+            cy.POSTvalidatefull(postres, postBody).then((validateres) => {
+              console.log(`POSTvalidatebody succeeded`);
+
+              let newrecordID = validateres.body.id;
+              console.log(
+                `NEW RECORD ID after POSTvalidatebody: ${newrecordID}`
+              );
+              cy.GETrecordbyid(appData, loginData, newrecordID).then(
+                (getres) => {
+                  console.log(getres.status);
+                  expect(getres.status).to.eq(HTTP_CODES.OK);
+
+                  // Let's see if POSTvalidatefull can validate the GET response
+                  cy.POSTvalidatefull(getres, postBody).then((validatedres) => {
+                    console.log(
+                      `GET record successfully validated by POSTvalidatefull`
+                    );
+                  });
+
+                  // return;
+                  // TODO: Clean this up
+                  // Hack for now, for faster debugging
+                  cy.writeFile(
+                    `temp/${newrecordID}-GET-output.json`,
+                    getres.body
+                  );
+                }
+              );
+            });
+          });
+        });
+      });
+    });
+  });
 });
