@@ -1,17 +1,6 @@
 /// <reference types="cypress" />
 
 describe("UserStory: Create New Record", () => {
-  //   let loginData;
-
-  //   before(async () => {
-  //     loginData = await cy.fixture("penguin/logindata.json");
-  //     // console.log(`loginData` + loginData.username, loginData.password);
-  //   });
-
-  // before(function () {
-  //   // cy.fixture("penguin/logindata.json").as("loginData");
-  // });
-  // TODO: Add login to the before block
   it(`click on new record and ensure form is displayed`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
 
@@ -25,9 +14,6 @@ describe("UserStory: Create New Record", () => {
   });
 
   it(`input mandatory information and submit new record successfully`, function () {
-    // cy.login(loginData.username, loginData.password).ensureOnLoggedInPage(
-    //   loginData.appID
-    // );
     cy.fixture("penguin/logindata.json").as("loginData");
 
     cy.get("@loginData").then((loginData) => {
@@ -145,7 +131,8 @@ describe("UserStory: Create New Record", () => {
     });
   });
 });
-// Submit record with optional data only
-// Submit record without any data
-// input empty string in SaveTimeSpent modal
-// zip should not allow non numbers: max: 9007199254740991 min: -9007199254740991
+// TODO: Submit record with optional data only
+// TODO: Type data in an input field to get the Save button to be visible. Then delete the inputs and submit an empty record.
+// TODO: Input empty string in SaveTimeSpent modal
+// TODO: zip should not allow non numbers.
+// TODO: API POST: Go beyond boundaries of Zip (max: 9007199254740991 min: -9007199254740991)
