@@ -147,4 +147,4 @@ Or alternatively, follow the instructions in the [code](https://github.com/prama
 
 To skip the test, add .skip after `it` for this particular test:
 
-`it.skip(\"should be able to make a GET request for a particular hardcoded record\")`
+`it.skip("should be able to make a GET request for a particular hardcoded record")`
