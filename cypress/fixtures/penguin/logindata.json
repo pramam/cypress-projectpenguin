@@ -1,5 +1,8 @@
 {
     "username": "yourusername",
     "password": "yourpassword",
-    "appID": "yourappID"
+    "bearerToken" : "yourbearertoken",
+    "privateToken": "yourprivatetoken",
+    "appID": "yourappID",
+    "recordID": "recordIDcreatedinUI"
 }
