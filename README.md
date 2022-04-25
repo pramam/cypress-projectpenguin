@@ -21,7 +21,7 @@ Then run:
 
 1. `npm install` from the command line.
 2. `npm run test` from the command line to run the tests.
-3. Run the tests under the `penguin folder
+3. Run the tests under the `penguin` folder
 
 ### Edit file `cypress.anyname.json`
 
