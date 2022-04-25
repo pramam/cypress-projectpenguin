@@ -1,5 +1,9 @@
 node_modules
 cypress/screenshots
 cypress/videos
-cypress.pramam.json
-cypress/fixtures/penguin/logindata.pramam.json
+cypress.anyname.json
+cypress/fixtures/penguin/logindata.json
+cypress/fixtures/penguin/appdata.json
+cypress/fixtures/penguin/logindatainvalidbearertoken.json
+cypress/fixtures/penguin/logindatainvalidprivatetoken.json
+temp
