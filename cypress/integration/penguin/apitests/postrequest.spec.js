@@ -237,7 +237,7 @@ describe("UserStory: POST API", () => {
     });
   });
 
-  it.only(`should be able to submit POST request with ALL UI fields/confirm with GET`, function () {
+  it(`should be able to submit POST request with ALL UI fields/confirm with GET`, function () {
     cy.fixture("penguin/logindata.json").as("loginData");
     cy.fixture("penguin/appdata.json").as("appData");
     cy.fixture("penguin/testdata/alluifields.json").as("postBody");
@@ -268,22 +268,8 @@ describe("UserStory: POST API", () => {
                   });
 
                   return;
-                  let getresbodyvalues = getres.body.values;
-                  // console.log(postBody.values.aHdR_gHQmRT8ItVTL);
-                  expect(getresbodyvalues).has.property(
-                    RECORD_KEYS.RK_FIRST_NAME,
-                    postBody.values.aHdR_gHQmRT8ItVTL
-                  );
-                  expect(getresbodyvalues).has.property(
-                    RECORD_KEYS.RK_LAST_NAME,
-                    postBody.values.aHxOeHmCTIGd_hg1b
-                  );
-                  expect(getresbodyvalues).has.property(
-                    RECORD_KEYS.RK_CITY,
-                    postBody.values.aFjm80LnbJf780V6p
-                  );
                   // TODO: Clean this up
-                  // Hack for now
+                  // Hack for now, for faster debugging
                   cy.writeFile(
                     `temp/${newrecordID}-GET-output.json`,
                     getres.body
