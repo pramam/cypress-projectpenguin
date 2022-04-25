@@ -318,7 +318,7 @@ describe("UserStory: POST API", () => {
                     );
                   });
 
-                  // return;
+                  return;
                   // TODO: Clean this up
                   // Hack for now, for faster debugging
                   cy.writeFile(
