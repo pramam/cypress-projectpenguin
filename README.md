@@ -37,7 +37,7 @@ The format of the file `cypress.anyname.json` should be:
 }
 ```
 
-Replace the url in the above file and save it. Now when you run `npm run test` it will automatically pick up the `baseUrl` from here, instead of picking it up from `/cypress.json`.
+Replace the url in the above file and save it. (This should not have :portnumber/api, it is the URL of the UI). Now when you run `npm run test` it will automatically pick up the `baseUrl` from here, instead of picking it up from `/cypress.json`.
 
 ### Edit file `cypress/fixtures/penguin/logindata.json`
 
