@@ -124,3 +124,27 @@ Create the following 2 files for GET authentication tests(you can copy `cypress/
     "recordID": "recordIDcreatedinUI"
 }
 ```
+
+### Edit RecordID values for hardcoded test or skip the test
+
+One API: GET test checks for hard coded values.
+
+To make this test work:
+
+**File:** `/cypress/integration/penguin/apitests/getrequest.spec.js`
+
+**UserStory: GET API**
+**Test case:** should be able to make a GET request for a particular hardcoded record
+
+You can create a New Record in the UI with the following information:
+First Name: `Sarah`
+Last Name: `Doe`
+City: `Paris`
+
+Enter the recordID for this test in `/cypress/penguin/logindata.json` in the field `recordID`
+
+Or alternatively, follow the instructions in the [code](https://github.com/pramam/cypress-projectpenguin/blob/af031ba6dd53b7c033e19bc3a29a0960cd57508a/cypress/integration/penguin/apitests/getrequest.spec.js#L10)
+
+To skip the test, add .skip after `it` for this particular test:
+
+`it.skip(\"should be able to make a GET request for a particular hardcoded record\")`
