@@ -97,7 +97,7 @@ Note: The appID for which this user has access (which is in `cypress/fixtures/pe
 
 ### Edit login data for GET authentication tests
 
-Create the following 2 files for GET authentication tests:
+Create the following 2 files for GET authentication tests(you can copy `cypress/fixtures/penguin/logindata.json` and edit the tokens):
 
 `cypress/fixtures/penguin/logindatainvalidbearertoken.json` should contain
 
