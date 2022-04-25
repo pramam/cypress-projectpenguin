@@ -260,6 +260,14 @@ describe("UserStory: POST API", () => {
                   console.log(getres.status);
                   expect(getres.status).to.eq(HTTP_CODES.OK);
 
+                  // Let's see if POSTvalidatefull can validate the GET response
+                  cy.POSTvalidatefull(getres, postBody).then((validatedres) => {
+                    console.log(
+                      `GET record successfully validated by POSTvalidatefull`
+                    );
+                  });
+
+                  return;
                   let getresbodyvalues = getres.body.values;
                   // console.log(postBody.values.aHdR_gHQmRT8ItVTL);
                   expect(getresbodyvalues).has.property(
